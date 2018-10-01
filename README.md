@@ -1,0 +1,1 @@
+# java-iterator-fail-types
