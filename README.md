@@ -17,7 +17,7 @@
     removed using Iterator‘s `remove()` method, that’s entirely 
     safe and doesn’t throw an exception.
 
-    _Example_: Default iterators for Collections from `java.util` 
+    _Example_: Default iterators on Collections from `java.util` 
   package such as **ArrayList**, **HashMap**, etc.
 
 * **Fail-safe**
@@ -49,6 +49,6 @@
   reflect modifications to the Collection after the construction 
   of the Iterator.
 
-    _Example_: Iterators on Collections from 
+    _Example_: Default iterators on Collections from 
   `java.util.concurrent` package such as 
   **ConcurrentHashMap**, **ConcurrentSkipListSet** etc.
