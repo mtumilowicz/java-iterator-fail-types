@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/mtumilowicz/java-iterator-fail-types.svg?branch=master)](https://travis-ci.com/mtumilowicz/java-iterator-fail-types)
 
 # java-iterator-fail-types
+_Reference_: https://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601
 
 * **Fail-fast**
 
@@ -11,7 +12,15 @@
     When iterating, on each `next()` call, the current value of 
     `modCount` gets compared with the initial value. If there’s 
     a mismatch, it throws `ConcurrentModificationException` which 
-    aborts the entire operation.
+    aborts the entire operation.  
+    However, this check is done without synchronization, so there is a risk of
+    seeing a stale value of the modification count and therefore that the iterator does
+    not realize a modification has been made. This was a deliberate design tradeoff
+    to reduce the performance impact of the concurrent modification detection code
+
+    _Remark_: ConcurrentModificationException can arise in 
+    single-threaded code as well; this happens when objects 
+    are removed from the collection directly.
 
     _Remark_: If during iteration over a Collection, an item is 
     removed using Iterator‘s `remove()` method, that’s entirely 
